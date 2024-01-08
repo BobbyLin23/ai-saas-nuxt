@@ -5,3 +5,4 @@
 - Tailwind CSS
 - Shadcn Vue
 - Nuxt ColorMode
+- Auth.js

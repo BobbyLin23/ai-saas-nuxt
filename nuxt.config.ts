@@ -7,6 +7,7 @@ export default defineNuxtConfig({
     'shadcn-nuxt',
     '@nuxtjs/color-mode',
     '@sidebase/nuxt-auth',
+    "@nuxt/image"
   ],
   shadcn: {
     prefix: '',

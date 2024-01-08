@@ -5,14 +5,6 @@ import { useForm } from 'vee-validate'
 import { Github } from 'lucide-vue-next'
 import { vAutoAnimate } from '@formkit/auto-animate/vue'
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '~/components/ui/card'
 import { useToast } from '~/components/ui/toast'
 
 definePageMeta({

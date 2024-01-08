@@ -1,17 +1,11 @@
 <script setup lang="ts">
-const { getSession } = useAuth()
-
-const session = await getSession()
+definePageMeta({
+  auth: false,
+})
 </script>
 
 <template>
   <div class="p-4">
-    <ToggleTheme />
-    <div>
-      {{ session }}
-    </div>
-    <div>
-      <UserButton />
-    </div>
+    Landing
   </div>
 </template>

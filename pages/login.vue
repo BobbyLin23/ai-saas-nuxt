@@ -5,14 +5,6 @@ import { useForm } from 'vee-validate'
 import { Github } from 'lucide-vue-next'
 import { vAutoAnimate } from '@formkit/auto-animate/vue'
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '~/components/ui/card'
 import { useToast } from '~/components/ui/toast'
 
 definePageMeta({
@@ -43,7 +35,7 @@ const onSubmit = form.handleSubmit(async (values) => {
     await signIn('credentials', {
       email: values.email,
       password: values.password,
-      callbackUrl: '/',
+      callbackUrl: '/dashboard',
     })
     toast({
       title: 'Success',
@@ -68,7 +60,7 @@ async function signInWithOAuth() {
   try {
     loading.value = true
     await signIn('github', {
-      callbackUrl: '/',
+      callbackUrl: '/dashboard',
     })
   }
   catch (e) {

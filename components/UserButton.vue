@@ -1,14 +1,6 @@
 <script setup lang="ts">
 import { LogOut, User } from 'lucide-vue-next'
 
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '~/components/ui/dropdown-menu'
-import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar'
-
 const { signOut } = useAuth()
 
 const user = await useCurrentUser()
