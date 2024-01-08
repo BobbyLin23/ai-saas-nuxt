@@ -7,6 +7,10 @@ const colorMode = useColorMode()
 function toggleTheme() {
   colorMode.preference = colorMode.preference === 'light' ? 'dark' : 'light'
 }
+
+onMounted(() => {
+  colorMode.preference = 'system'
+})
 </script>
 
 <template>
