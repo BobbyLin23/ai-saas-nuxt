@@ -65,7 +65,7 @@ const tools = [
       <Card
         v-for="tool in tools"
         :key="tool.label"
-        class="p-4 border-black/5 flex items-center justify-between
+        class="p-4 border-muted flex items-center justify-between
         hover:shadow-md transition cursor-pointer"
         @click="$router.push(tool.href)"
       >
