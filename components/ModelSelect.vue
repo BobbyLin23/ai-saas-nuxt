@@ -1,28 +1,28 @@
 <script setup lang="ts">
-const value = ref('gpt-turbo-3.5')
+
 </script>
 
 <template>
   <Select>
     <SelectTrigger class="w-[180px]">
-      <SelectValue v-model="value" placeholder="Select a model" />
+      <SelectValue placeholder="Select a model" />
     </SelectTrigger>
     <SelectContent>
       <SelectGroup>
         <SelectLabel>Models</SelectLabel>
-        <SelectItem value="apple">
+        <SelectItem value="gpt-turbo-3">
           gpt-turbo-3
         </SelectItem>
-        <SelectItem value="banana">
+        <SelectItem value="gpt-4">
           gpt-4
         </SelectItem>
-        <SelectItem value="blueberry">
+        <SelectItem value="bard">
           bard
         </SelectItem>
-        <SelectItem value="grapes">
+        <SelectItem value="claudi">
           claudi
         </SelectItem>
-        <SelectItem value="pineapple">
+        <SelectItem value="gemini">
           gemini
         </SelectItem>
       </SelectGroup>
