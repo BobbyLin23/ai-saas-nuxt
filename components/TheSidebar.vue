@@ -3,7 +3,7 @@ const route = useRoute()
 </script>
 
 <template>
-  <div :class="cn('space-y-4 py-4 flex flex-col h-full border-r', route.path === '/dashboard' && 'hidden')">
+  <div :class="cn('space-y-4 flex flex-col h-full border-r', route.path === '/dashboard' && 'hidden')">
     <ConversationList v-if="route.path === '/conversation'" />
     <div v-if="route.path === '/companions'">
       Companions

@@ -9,7 +9,7 @@ defineProps<{
 </script>
 
 <template>
-  <div class="px-4 lg:px-8 flex items-center gap-x-3 mb-8">
+  <div class="flex items-center gap-x-3 mb-2">
     <div :class="cn('p-2 w-fit rounded-md', bgColor)">
       <component :is="icon" :class="cn('w-10 h-10', iconColor)" />
     </div>
