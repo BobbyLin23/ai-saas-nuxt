@@ -7,7 +7,9 @@ export default defineNuxtConfig({
     'shadcn-nuxt',
     '@nuxtjs/color-mode',
     '@sidebase/nuxt-auth',
-    "@nuxt/image"
+    '@nuxt/image',
+    'dayjs-nuxt',
+    '@pinia/nuxt',
   ],
   shadcn: {
     prefix: '',
@@ -24,5 +26,8 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     authSecret: process.env.AUTH_SECRET,
+  },
+  pinia: {
+    storesDirs: ['./stores/**'],
   },
 })

@@ -11,6 +11,7 @@ useSeoMeta({
   <NuxtLayout>
     <NuxtPage />
     <Toaster />
+    <ModalProvider />
   </NuxtLayout>
 </template>
 

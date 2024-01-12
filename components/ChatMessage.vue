@@ -25,7 +25,7 @@ function onCopy() {
   <div :class="cn('group flex items-start gap-x-3 py-4 w-full', role === 'user' && 'justify-end')">
     <BotAvatar v-if="role !== 'user'" />
     <div class="rounded-md px-4 py-2 max-w-sm text-sm bg-primary/10">
-      <Loader2 v-if="loading" class="animate-spin" />
+      <Loader2 v-if="loading && role !== 'user'" class="animate-spin" />
       <div v-else>
         {{ content }}
       </div>
@@ -38,7 +38,7 @@ function onCopy() {
       variant="ghost"
       @click="onCopy"
     >
-      <Copy class-name="w-4 h-4" />
+      <Copy class-name="w-2 h-2" />
     </Button>
   </div>
 </template>
