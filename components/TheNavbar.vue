@@ -33,7 +33,7 @@ const routes = [
     <div class="flex items-center gap-x-2 ml-12 md:gap-x-4 text-muted-foreground">
       <NuxtLink
         v-for="route in routes" :key="route.label" :href="route.href"
-        :class="cn('font-medium text-sm', route.href === $route.path && 'text-black dark:text-white')"
+        :class="cn('font-medium text-sm', $route.path.startsWith(route.href) && 'text-black dark:text-white')"
       >
         {{ route.label }}
       </NuxtLink>

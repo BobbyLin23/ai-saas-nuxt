@@ -1,29 +1,25 @@
 <script setup lang="ts">
+import { useSelectModelStore } from '~/stores/selectModel'
 
+const selectModel = useSelectModelStore()
+
+const models = ['gpt-turbo-3', 'gpt-4', 'bard', 'claudi', 'gemini']
+
+function onClick(value: string) {
+  selectModel.setModel(value)
+}
 </script>
 
 <template>
   <Select>
     <SelectTrigger class="w-[180px]">
-      <SelectValue placeholder="Select a model" />
+      <SelectValue :placeholder="selectModel.model" />
     </SelectTrigger>
     <SelectContent>
       <SelectGroup>
         <SelectLabel>Models</SelectLabel>
-        <SelectItem value="gpt-turbo-3">
-          gpt-turbo-3
-        </SelectItem>
-        <SelectItem value="gpt-4">
-          gpt-4
-        </SelectItem>
-        <SelectItem value="bard">
-          bard
-        </SelectItem>
-        <SelectItem value="claudi">
-          claudi
-        </SelectItem>
-        <SelectItem value="gemini">
-          gemini
+        <SelectItem v-for="item in models" :key="item" :value="item" @click="onClick(item)">
+          {{ item }}
         </SelectItem>
       </SelectGroup>
     </SelectContent>

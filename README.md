@@ -1,5 +1,6 @@
 # AI SaaS
 
+- Vue
 - Nuxt3
 - TypeScript
 - Tailwind CSS

@@ -6,6 +6,7 @@ import type { ChatCompletionMessageParam } from 'openai/src/resources/chat/compl
 import { useForm } from 'vee-validate'
 import { z } from 'zod'
 import { useToast } from '~/components/ui/toast'
+import type { ConversationWithMessages } from '~/types'
 
 definePageMeta({
   layout: 'dashboard',
@@ -25,33 +26,43 @@ const form = useForm({
 
 const loading = ref(false)
 
+const loadingIndex = ref(-1)
+
 const messages = ref<ChatCompletionMessageParam[]>([])
 
 const onSubmit = form.handleSubmit(async (values) => {
   try {
-    loading.value = true
     const userMessage: ChatCompletionMessageParam = {
       role: 'user',
       content: values.prompt,
     }
+
     const newMessage = [...messages.value, userMessage]
+
     messages.value.push(userMessage)
-    await useFetch('/api/message', {
-      method: 'post',
-      body: {
-        content: values.prompt,
-        conversationId: route.params.id as string,
-      },
-    })
     const resMessage: ChatCompletionMessageParam = {
       role: 'assistant',
       content: '',
     }
     messages.value.push(resMessage)
+    loadingIndex.value = messages.value.length - 1
+    // send user message to db
+    loading.value = true
+    await useFetch('/api/message', {
+      method: 'post',
+      body: {
+        role: 'user',
+        content: values.prompt,
+        conversationId: route.params.id as string,
+      },
+    })
+
+    // get response from ai
     const res = await useFetch<ChatCompletionMessage>('/api/ai', {
       method: 'post',
       body: {
         messages: newMessage,
+        conversationId: route.params.id as string,
       },
     })
     if (res.error.value) {
@@ -76,6 +87,31 @@ const onSubmit = form.handleSubmit(async (values) => {
     form.resetForm()
   }
 })
+
+async function fetchCurrentMessage() {
+  const { data, error } = await useFetch<ConversationWithMessages>(`/api/conversation/${route.params.id}`, {
+    method: 'get',
+  })
+
+  if (error.value) {
+    toast({
+      title: 'Error',
+      description: error.value.message,
+      variant: 'destructive',
+    })
+  }
+
+  if (data.value?.messages) {
+    messages.value = data.value.messages.map((message) => {
+      return {
+        content: message.content,
+        role: message.role,
+      } as ChatCompletionMessageParam
+    })
+  }
+}
+
+fetchCurrentMessage()
 </script>
 
 <template>
@@ -85,9 +121,11 @@ const onSubmit = form.handleSubmit(async (values) => {
       <div class="w-full md:max-w-2xl mx-auto">
         <ChatMessage
           v-for="(message, index) in messages"
+          :id="index"
           :key="index"
           :loading="loading"
           :role="message.role"
+          :loading-index="loadingIndex"
           :content="message.content"
         />
       </div>
@@ -104,7 +142,7 @@ const onSubmit = form.handleSubmit(async (values) => {
                 rows="1"
                 :disabled="loading"
                 v-bind="componentField"
-                @keyup.enter.prevent="onSubmit"
+                @keydown.enter.prevent="onSubmit"
               />
               <div class="absolute bottom-2 md:bottom-3 left-2 md:left-4">
                 <Paperclip />

@@ -5,7 +5,7 @@ export default defineEventHandler(async (event) => {
   try {
     const body = await readBody(event)
 
-    const { messages } = body
+    const { messages, conversationId } = body
 
     if (!messages) {
       throw createError({
@@ -27,6 +27,22 @@ export default defineEventHandler(async (event) => {
       }),
       timeout: 100000,
     })
+
+    if (!conversation.choices[0].message.content) {
+      throw createError({
+        statusCode: 500,
+        statusMessage: 'Internal server error',
+      })
+    }
+    else {
+      await prisma.message.create({
+        data: {
+          content: conversation.choices[0].message.content,
+          role: conversation.choices[0].message.role,
+          conversationId,
+        },
+      })
+    }
 
     return conversation.choices[0].message
   }

@@ -2,9 +2,9 @@ export default defineEventHandler(async (event) => {
   try {
     const body = await readBody(event)
 
-    const { content, conversationId } = body
+    const { content, conversationId, role } = body
 
-    if (!content || !conversationId) {
+    if (!content || !conversationId || !role) {
       throw createError({
         statusCode: 400,
         statusMessage: 'Content and conversation id are required',
@@ -14,6 +14,7 @@ export default defineEventHandler(async (event) => {
     const message = await prisma.message.create({
       data: {
         content,
+        role,
         conversationId,
       },
     })

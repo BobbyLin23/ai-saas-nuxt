@@ -1,20 +1,5 @@
-export interface Conversation {
-  id: string
-  name: string
-  userId: string
-  user: User
-  messages: any
-  createdAt: Date
-  updatedAt: Date
-}
+import type { Conversation, Message } from '@prisma/client'
 
-export interface User {
-  id: string
-  name?: string
-  email?: string
-  emailVerified?: Date
-  image?: string
-  hashedPassword?: string
-  accounts?: any
-  conversations?: Conversation[]
+export type ConversationWithMessages = Conversation & {
+  messages: Message[]
 }

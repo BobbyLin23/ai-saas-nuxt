@@ -125,7 +125,7 @@ const onSubmit = form.handleSubmit(async (values) => {
     <CardFooter>
       <div class="text-sm py-2">
         Already have an account?
-        <NuxtLink to="/login" class="text-purple-800 hover:underline">
+        <NuxtLink to="/login" class="text-purple-800 dark:text-purple-500 hover:underline">
           Sign in
         </NuxtLink>
       </div>

@@ -120,7 +120,7 @@ async function signInWithOAuth() {
     <CardFooter>
       <div class="text-sm py-2">
         No account?
-        <NuxtLink to="/register" class="text-purple-800 hover:underline">
+        <NuxtLink to="/register" class="text-purple-800 dark:text-purple-500 hover:underline">
           Sign up
         </NuxtLink>
       </div>
