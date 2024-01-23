@@ -2,7 +2,6 @@
 import { MessageSquare, Pencil, Plus, Trash } from 'lucide-vue-next'
 import type { Conversation } from '@prisma/client'
 import { useToast } from './ui/toast'
-import { useUpdateConversationList } from '~/stores/updateConversationList'
 
 const { toast } = useToast()
 
@@ -13,7 +12,6 @@ const dayjs = useDayjs()
 const conversations = ref<Conversation[]>([])
 
 const editNameModal = useEditNameModal()
-const update = useUpdateConversationList()
 
 async function createConversation() {
   const { data, error } = await useFetch<Conversation>('/api/conversation', {
@@ -78,13 +76,7 @@ async function handleDelete(id: string) {
   }
 }
 
-getConversationList()
-
-watch(() => update.isUpdate, () => {
-  if (update.isUpdate)
-    getConversationList()
-  update.setUpdate(false)
-})
+await getConversationList()
 </script>
 
 <template>

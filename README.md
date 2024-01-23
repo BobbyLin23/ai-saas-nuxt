@@ -7,3 +7,6 @@
 - Shadcn Vue
 - Nuxt ColorMode
 - Auth.js
+- Neon(PostgreSQL)
+- Prisma
+- Pinia

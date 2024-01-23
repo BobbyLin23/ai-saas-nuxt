@@ -117,6 +117,9 @@ fetchCurrentMessage()
 <template>
   <div class="h-full flex flex-col px-4">
     <ModelSelect />
+    <div v-if="messages.length < 1" class="flex-1 flex items-center justify-center">
+      <NuxtImg src="/empty.png" alt="Empty" class="object-cover w-48 h-48" />
+    </div>
     <div class="flex-1 overflow-y-auto">
       <div class="w-full md:max-w-2xl mx-auto">
         <ChatMessage

@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     'dayjs-nuxt',
     '@pinia/nuxt',
+    '@nuxtjs/cloudinary',
   ],
   shadcn: {
     prefix: '',

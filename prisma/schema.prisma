@@ -62,3 +62,46 @@ model Message {
   conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
   conversationId String
 }
+
+model Category {
+  id         String      @id @default(cuid())
+  name       String
+  companions Companion[]
+}
+
+model Companion {
+  id           String @id @default(cuid())
+  userId       String
+  name         String @db.Text
+  src          String
+  description  String
+  instructions String @db.Text
+  seed         String @db.Text
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId String
+
+  companionMessages CompanionMessage[]
+}
+
+enum Role {
+  User
+  System
+}
+
+model CompanionMessage {
+  id      String @id @default(cuid())
+  role    Role
+  content String @db.Text
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  companionId String
+  userId      String
+
+  companion Companion @relation(fields: [companionId], references: [id], onDelete: Cascade)
+}

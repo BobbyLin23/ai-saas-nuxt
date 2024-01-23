@@ -4,12 +4,12 @@ const route = useRoute()
 
 <template>
   <div :class="cn('space-y-4 flex flex-col h-full border-r', route.path === '/dashboard' && 'hidden')">
-    <ConversationList v-if="route.path.startsWith('/conversation')" />
-    <div v-if="route.path === '/companions'">
-      Companions
-    </div>
-    <div v-if="route.path === '/settings'">
-      Settings
-    </div>
+    <ClientOnly>
+      <ConversationList v-if="route.path.startsWith('/conversation')" />
+      <CompanionList v-if="route.path.startsWith('/companions')" />
+      <div v-if="route.path === '/settings'">
+        Settings
+      </div>
+    </ClientOnly>
   </div>
 </template>
