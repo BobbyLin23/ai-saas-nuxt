@@ -5,6 +5,5 @@
 <template>
   <div>
     <EditNameModal />
-    <CreateCompanionModal />
   </div>
 </template>

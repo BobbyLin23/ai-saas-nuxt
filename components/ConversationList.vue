@@ -72,7 +72,7 @@ async function handleDelete(id: string) {
       description: 'Conversation deleted.',
     })
     router.push('/conversation')
-    getConversationList()
+    await getConversationList()
   }
 }
 

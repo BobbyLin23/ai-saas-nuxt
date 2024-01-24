@@ -142,7 +142,7 @@ categoriesStore.getCategories().then(() => {
                   <SelectItem
                     v-for="category in categories"
                     :key="category.id"
-                    :value="category.name"
+                    :value="category.id"
                   >
                     {{ category.name }}
                   </SelectItem>
@@ -171,7 +171,7 @@ categoriesStore.getCategories().then(() => {
         <FormItem>
           <FormLabel>Instructions</FormLabel>
           <FormControl>
-            <Textarea rows="2" class="bg-background resize-none" v-bind="componentField" />
+            <Textarea rows="7" class="bg-background resize-none" v-bind="componentField" />
           </FormControl>
           <FormDescription>
             Describe in detail your companion&apos;s backstory and relevant details.
@@ -183,7 +183,7 @@ categoriesStore.getCategories().then(() => {
         <FormItem>
           <FormLabel>Seeds</FormLabel>
           <FormControl>
-            <Textarea rows="2" class="bg-background resize-none" v-bind="componentField" />
+            <Textarea rows="7" class="bg-background resize-none" v-bind="componentField" />
           </FormControl>
           <FormDescription>
             Write couple of examples of a human chatting with your AI companion, write expected answers.

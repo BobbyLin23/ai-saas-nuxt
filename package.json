@@ -17,6 +17,7 @@
     "@prisma/client": "5.7.1",
     "@vee-validate/zod": "^4.12.4",
     "@vueuse/core": "^10.7.1",
+    "ai": "^2.2.31",
     "bcryptjs": "^2.4.3",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",

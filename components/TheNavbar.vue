@@ -21,7 +21,9 @@ const routes = [
 
 <template>
   <div class="flex items-center p-4 h-16 bg-transparent border-b">
-    <MobileSidebar />
+    <ClientOnly>
+      <MobileSidebar />
+    </ClientOnly>
     <NuxtLink href="/dashboard" class="flex items-center pl-3">
       <div class="relative h-8 w-8 mr-4">
         <NuxtImg src="/logo.png" alt="logo" />
@@ -38,9 +40,11 @@ const routes = [
         {{ route.label }}
       </NuxtLink>
     </div>
-    <div class="flex w-full justify-end gap-x-2">
-      <ToggleTheme />
-      <UserButton />
-    </div>
+    <ClientOnly>
+      <div class="flex w-full justify-end gap-x-2">
+        <ToggleTheme />
+        <UserButton />
+      </div>
+    </ClientOnly>
   </div>
 </template>

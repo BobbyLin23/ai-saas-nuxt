@@ -7,7 +7,7 @@ const route = useRoute()
     <div class="fixed w-full inset-x-0 z-50 bg-background">
       <TheNavbar />
     </div>
-    <main class="pt-20 relative h-full">
+    <main class="pt-16 relative h-full">
       <div class="hidden md:flex md:w-72 md:fixed md:inset-y-0 md:flex-col mt-16">
         <TheSidebar />
       </div>
