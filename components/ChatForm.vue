@@ -11,7 +11,7 @@ const emits = defineEmits(['update:modelValue', 'trigger'])
 function onSubmit() {
   if (!props.modelValue)
     return
-  emits('trigger', props.modelValue)
+  emits('trigger')
 }
 </script>
 

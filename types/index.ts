@@ -1,12 +1,22 @@
-import type { Conversation, Message } from '@prisma/client'
+import type {
+  Companion,
+  CompanionMessage,
+  Conversation,
+  Message,
+  Role,
+} from '@prisma/client'
 
 export type ConversationWithMessages = Conversation & {
   messages: Message[]
 }
 
 export interface ChatMessageProps {
-  role: 'system' | 'user'
+  role: Role
   content?: string
-  isLoading?: boolean
+  loading?: boolean
   src?: string
+}
+
+export type CompanionWithMessages = Companion & {
+  companionMessages: CompanionMessage[]
 }
